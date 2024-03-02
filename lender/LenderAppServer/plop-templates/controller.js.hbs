@@ -1,0 +1,21 @@
+import { StatusCodes } from "http-status-codes";
+import * as {{camelCase name}}Repository from "../repository/{{camelCase name}}Repository.js";
+import { nanoid } from "nanoid";
+
+
+//sample
+export const getAllEmployees = async (req, res) => {
+try {
+const { employees, count } = await employeeRepository.getAllEmployees();
+
+const responseMessage = `Retrieved ${count} employees`;
+
+res
+.status(StatusCodes.OK)
+.json({ message: responseMessage, employees, count });
+} catch (error) {
+res
+.status(StatusCodes.INTERNAL_SERVER_ERROR)
+.json({ message: "Error retrieving employees", error: error.message });
+}
+};

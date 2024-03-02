@@ -1,0 +1,12 @@
+import pool from "../../db/connect.js";
+
+export const getAllEmployees = async () => {
+try {
+const [rows, fields] = await pool.query("SELECT * FROM empDetails");
+const count = rows.length; // Get the count of rows
+
+return { employees: rows, count }; // Return employee data and count
+} catch (error) {
+throw new Error("Error retrieving employees from the database");
+}
+};
